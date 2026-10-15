@@ -1,4 +1,3 @@
-
 import { ServicesService } from "../services/services.service.js";
 
 const servicesService = new ServicesService();
@@ -76,6 +75,10 @@ export default class ServiceController {
         });
       }
 
+      const result = await servicesService.getServices({});
+
+      req.app.io.emit("servicesUpdated", result.services);
+
       res.json(updatedService);
     } catch (error) {
       res.status(400).json({
@@ -96,6 +99,10 @@ export default class ServiceController {
         });
       }
 
+      const result = await servicesService.getServices({});
+
+      req.app.io.emit("servicesUpdated", result.services);
+
       res.json({
         message: "Servicio eliminado exitosamente",
         service: deletedService,
@@ -107,4 +114,3 @@ export default class ServiceController {
     }
   }
 }
-

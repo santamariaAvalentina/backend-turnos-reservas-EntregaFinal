@@ -3,20 +3,22 @@ import { BookingsDAO } from "../dao/bookings.dao.js";
 const bookingsDAO = new BookingsDAO();
 
 export class BookingsRepository {
+  async getAll() {
+    return await bookingsDAO.getAll();
+  }
 
-    async getAll() {
-        return await bookingsDAO.getAll();
-    }
+  async getById(id) {
+    return await bookingsDAO.getById(id);
+  }
 
-    async getById(id) {
-        return await bookingsDAO.getById(id);
-    }
+  async create(booking) {
+    return await bookingsDAO.create(booking);
+  }
 
-    async create(booking) {
-        return await bookingsDAO.create(booking);
-    }
-
-    async update(id, booking) {
-        return await bookingsDAO.update(id, booking);
-    }
+  async update(id, booking) {
+    return await bookingsDAO.update(id, booking);
+  }
+  async delete(id) {
+    return await bookingsDAO.delete(id);
+  }
 }

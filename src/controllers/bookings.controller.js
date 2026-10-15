@@ -15,16 +15,16 @@ export default class BookingController {
     }
   }
   async getBookings(req, res) {
-  try {
-    const bookings = await bookingsService.getBookings();
+    try {
+      const bookings = await bookingsService.getBookings();
 
-    res.json(bookings);
-  } catch (error) {
-    res.status(500).json({
-      error: "Error al obtener las reservas",
-    });
+      res.json(bookings);
+    } catch (error) {
+      res.status(500).json({
+        error: "Error al obtener las reservas",
+      });
+    }
   }
-}
   async getBookingById(req, res) {
     try {
       const { id } = req.params;
@@ -70,6 +70,47 @@ export default class BookingController {
 
       res.status(500).json({
         error: error.message,
+      });
+    }
+  }
+  async updateBooking(req, res) {
+    try {
+      const { id } = req.params;
+
+      const updatedBooking = await bookingsService.updateBooking(id, req.body);
+
+      if (!updatedBooking) {
+        return res.status(404).json({
+          error: "Reserva no encontrada",
+        });
+      }
+
+      res.json(updatedBooking);
+    } catch (error) {
+      res.status(400).json({
+        error: error.message,
+      });
+    }
+  }
+  async deleteBooking(req, res) {
+    try {
+      const { id } = req.params;
+
+      const deletedBooking = await bookingsService.deleteBooking(id);
+
+      if (!deletedBooking) {
+        return res.status(404).json({
+          error: "Reserva no encontrada",
+        });
+      }
+
+      res.json({
+        message: "Reserva eliminada exitosamente",
+        booking: deletedBooking,
+});
+    } catch (error) {
+      res.status(500).json({
+        error: "Error al eliminar la reserva",
       });
     }
   }

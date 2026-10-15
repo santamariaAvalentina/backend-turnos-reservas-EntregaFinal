@@ -46,8 +46,8 @@ export class BookingsService {
       throw new Error("Servicio no encontrado");
     }
 
-    const existingService = booking.services.find((item) =>
-      item.service.equals(serviceId),
+    const existingService = booking.services.find(
+      (item) => item.service._id.toString() === serviceId,
     );
 
     if (existingService) {
@@ -60,5 +60,23 @@ export class BookingsService {
     }
 
     return await bookingsRepository.update(bookingId, booking);
+  }
+  async updateBooking(id, updatedData) {
+    const booking = await bookingsRepository.getById(id);
+
+    if (!booking) {
+      return null;
+    }
+
+    return await bookingsRepository.update(id, updatedData);
+  }
+  async deleteBooking(id) {
+    const booking = await bookingsRepository.getById(id);
+
+    if (!booking) {
+      return null;
+    }
+
+    return await bookingsRepository.delete(id);
   }
 }
