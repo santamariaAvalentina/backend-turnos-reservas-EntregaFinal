@@ -5,16 +5,27 @@
   {{#each services}}
     <article>
       <h2>{{name}}</h2>
-      <p>{{description}}</p>
+
+      <p>Este servicio consta de: {{description}}</p>
+
       <p>Duración: {{duration}} minutos</p>
-      <p>Precio: ${{price}}</p>
+
+      <p class="service-price">
+        Precio: ${{price}}
+      </p>
+
       <p>Categoría: {{category}}</p>
 
       {{#if available}}
-        <p>Servicio disponible</p>
+        <p class="service-availability available">
+          Servicio disponible
+        </p>
       {{else}}
-        <p>Servicio no disponible</p>
+        <p class="service-availability unavailable">
+          Servicio no disponible
+        </p>
       {{/if}}
+
     </article>
   {{/each}}
 

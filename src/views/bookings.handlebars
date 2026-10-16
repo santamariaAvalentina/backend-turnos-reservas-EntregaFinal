@@ -3,12 +3,66 @@
 <div id="bookings-container">
 
   {{#each bookings}}
-    <article>
+    <article class="booking-card">
+
       <h2>Cliente: {{clientName}}</h2>
-      <p>Email: {{clientEmail}}</p>
-      <p>Fecha: {{date}}</p>
-      <p>Hora: {{time}}</p>
-      <p>Estado: {{status}}</p>
+
+      <div class="booking-details">
+
+        <p><strong>Email:</strong> {{clientEmail}}</p>
+
+        <div class="booking-datetime">
+
+          <div class="datetime-item">
+            <span class="datetime-label">FECHA</span>
+            <span class="datetime-value">{{date}}</span>
+          </div>
+
+          <div class="datetime-item">
+            <span class="datetime-label">HORARIO</span>
+            <span class="datetime-value">{{time}}</span>
+          </div>
+
+        </div>
+
+        <p><strong>Estado:</strong> {{status}}</p>
+
+      </div>
+
+      <section class="booking-services">
+
+        <h3>Servicios asociados</h3>
+
+        {{#if services.length}}
+
+          <ul class="service-list">
+
+            {{#each services}}
+              <li class="service-item">
+
+                <span class="service-name">
+                  {{service.name}}
+                </span>
+
+                <span class="service-quantity">
+                  Cantidad: {{quantity}}
+                </span>
+
+              </li>
+            {{/each}}
+
+          </ul>
+
+        {{else}}
+
+          <p class="no-services">
+            Esta reserva no tiene servicios asociados.
+          </p>
+
+        {{/if}}
+
+      </section>
+
     </article>
   {{/each}}
 

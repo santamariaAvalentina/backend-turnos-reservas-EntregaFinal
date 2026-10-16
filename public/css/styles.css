@@ -1,61 +1,393 @@
+/* ==============================
+   ESTILOS GENERALES
+============================== */
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
-  padding: 40px;
+  padding: 40px 24px;
   font-family: Arial, sans-serif;
-  background-color: #f4f6f8;
-  color: #2c3e50;
+  background-color: #f3f7f6;
+  color: #29434a;
 }
 
 h1 {
+  max-width: 1000px;
+  margin: 0 auto 40px;
+  padding: 24px 30px;
+
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+
+  line-height: 1.3;
   text-align: center;
-  margin-bottom: 35px;
-  font-size: 32px;
+
+  color: #194b43;
+  background: linear-gradient(135deg, #ffffff 0%, #e7f3ef 100%);
+
+  border: 1px solid #d2e7df;
+  border-bottom: 4px solid #78a99a;
+  border-radius: 16px;
+
+  box-shadow:
+    0 6px 18px rgba(25, 75, 67, 0.1),
+    0 2px 5px rgba(25, 75, 67, 0.05);
+
+  text-shadow: 1px 2px 3px rgba(25, 75, 67, 0.12);
 }
+
+h1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+h1::before {
+  content: "";
+  display: inline-block;
+  flex-shrink: 0;
+  width: 34px;
+  height: 40px;
+
+  background-color: #24665c;
+
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 48'%3E%3Cpath d='M20 7 C13 1 3 5 4 17 C5 25 10 29 12 39 C13 44 17 44 19 35 L20 30 L21 35 C23 44 27 44 28 39 C30 29 35 25 36 17 C37 5 27 1 20 7Z' fill='none' stroke='black' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 48'%3E%3Cpath d='M20 7 C13 1 3 5 4 17 C5 25 10 29 12 39 C13 44 17 44 19 35 L20 30 L21 35 C23 44 27 44 28 39 C30 29 35 25 36 17 C37 5 27 1 20 7Z' fill='none' stroke='black' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* ==============================
+   CONTENEDOR DE RESERVAS
+============================== */
+
+#bookings-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* ==============================
+   TARJETAS DE RESERVAS
+============================== */
+
+#bookings-container .booking-card {
+  width: 100%;
+  max-width: 390px;
+  margin: 0;
+  padding: 26px;
+  background-color: #ffffff;
+  border: 1px solid #e0eae7;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(25, 75, 67, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#bookings-container .booking-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 24px rgba(25, 75, 67, 0.13);
+}
+
+/* NOMBRE DEL CLIENTE */
+
+.booking-card h2 {
+  margin: 0;
+  padding-bottom: 18px;
+  color: #194b43;
+  font-size: 21px;
+  line-height: 1.4;
+  border-bottom: 2px solid #e7f1ed;
+  overflow-wrap: anywhere;
+}
+
+/* DATOS DE LA RESERVA */
+
+.booking-card .booking-details {
+  margin-top: 20px;
+}
+
+.booking-card .booking-details p {
+  margin: 10px 0;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.booking-card .booking-details strong {
+  color: #285b63;
+}
+
+/* FECHA Y HORA */
+
+.booking-card .booking-datetime {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.booking-card .datetime-item {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  min-width: 0;
+  padding: 16px 12px;
+  background-color: #e7f3ef;
+  border: 1px solid #d2e7df;
+  border-radius: 12px;
+}
+
+.booking-card .datetime-label {
+  color: #4e8174;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.booking-card .datetime-value {
+  color: #194b43;
+  font-size: 16px;
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+/* SERVICIOS ASOCIADOS A UNA RESERVA */
+
+.booking-card .booking-services {
+  margin-top: 26px;
+  padding: 20px;
+  background-color: #f4f8f7;
+  border: 1px solid #e2eae8;
+  border-radius: 14px;
+}
+
+.booking-card .booking-services h3 {
+  margin: 0 0 16px;
+  padding: 0;
+  color: #285b63;
+  font-size: 16px;
+  line-height: 1.4;
+}
+
+.booking-card .service-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.booking-card .service-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 0;
+  padding: 16px;
+  background-color: #ffffff;
+  border: 1px solid #e2eae8;
+  border-left: 4px solid #4e9485;
+  border-radius: 10px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.booking-card .service-item:hover {
+  transform: translateX(3px);
+  box-shadow: 0 4px 12px rgba(23, 61, 70, 0.08);
+}
+
+.booking-card .service-name {
+  color: #173d46;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.booking-card .service-quantity {
+  display: inline-block;
+  padding: 6px 10px;
+  color: #24665c;
+  background-color: #e0f0eb;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.booking-card .no-services {
+  margin: 0;
+  padding: 14px;
+  color: #718186;
+  background-color: #ffffff;
+  border: 1px dashed #cfddd8;
+  border-radius: 9px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+/* ==============================
+   CONTENEDOR DE SERVICIOS
+============================== */
 
 #services-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
   justify-content: center;
+  align-items: stretch;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
 }
 
-article {
-  background-color: white;
-  width: 300px;
-  padding: 25px;
-  border-radius: 12px;
-  border: 1px solid #e1e5e8;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
+/* TARJETAS DE SERVICIOS */
 
-article:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
-}
-
-article h2 {
-  margin-top: 0;
-  margin-bottom: 15px;
-  font-size: 21px;
-}
-
-article p {
-  margin: 9px 0;
-  line-height: 1.5;
-}
-
-article p:last-child {
-  font-weight: bold;
-  margin-top: 18px;
-}
-#bookings-container {
+#services-container article {
   display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 390px;
+  margin: 0;
+  padding: 26px;
+  background-color: #ffffff;
+  border: 1px solid #e0eae7;
+  border-radius: 18px;
+  box-shadow: 0 5px 18px rgba(25, 75, 67, 0.08);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+#services-container article:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 9px 24px rgba(25, 75, 67, 0.13);
+}
+
+/* NOMBRE DEL SERVICIO */
+
+#services-container article h2 {
+  margin: 0 0 18px;
+  padding-bottom: 16px;
+  color: #194b43;
+  font-size: 21px;
+  line-height: 1.4;
+  border-bottom: 2px solid #e7f1ed;
+  overflow-wrap: anywhere;
+}
+
+/* DESCRIPCIÓN Y DATOS */
+
+#services-container article p {
+  margin: 9px 0;
+  color: #52666b;
+  font-size: 14px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+/* PRECIO DESTACADO */
+
+#services-container article p.service-price {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  margin: 12px 0;
+  padding: 10px 14px;
+  color: #194b43;
+  background-color: #e7f3ef;
+  border: 1px solid #d2e7df;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+/* DISPONIBILIDAD: ESTILO COMÚN */
+
+#services-container article p.service-availability {
+  margin-top: auto;
+  padding: 12px;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+/* SERVICIO DISPONIBLE: VERDE */
+
+#services-container article p.service-availability.available {
+  margin-top: 18px;
+  color: #24665c;
+  background-color: #e7f3ef;
+  border: 1px solid #d2e7df;
+}
+
+/* SERVICIO NO DISPONIBLE: ROJO */
+
+#services-container article p.service-availability.unavailable {
+  margin-top: 18px;
+  color: #a52834;
+  background-color: #fde8e9;
+  border: 1px solid #f5c2c7;
+}
+
+/* ==============================
+   DISEÑO PARA CELULARES
+============================== */
+
+@media (max-width: 480px) {
+  body {
+    padding: 24px 12px;
+  }
+
+  h1 {
+    margin-bottom: 24px;
+    font-size: 26px;
+  }
+
+  #bookings-container {
+    gap: 20px;
+    padding: 4px;
+  }
+
+  #bookings-container .booking-card {
+    padding: 20px;
+  }
+
+  .booking-card .booking-services {
+    padding: 15px;
+  }
+
+  .booking-card .booking-datetime {
+    gap: 8px;
+  }
+
+  .booking-card .datetime-item {
+    padding: 13px 9px;
+  }
+
+  .booking-card .datetime-value {
+    font-size: 14px;
+  }
+
+  #services-container {
+    gap: 20px;
+    padding: 4px;
+  }
+
+  #services-container article {
+    padding: 20px;
+  }
 }

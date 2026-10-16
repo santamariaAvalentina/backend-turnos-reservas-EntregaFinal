@@ -2,7 +2,7 @@ import { BookingModel } from "./models/booking.model.js";
 
 export class BookingsDAO {
   async getAll() {
-    return await BookingModel.find().lean();
+    return await BookingModel.find().populate("services.service").lean();
   }
 
   async getById(id) {
