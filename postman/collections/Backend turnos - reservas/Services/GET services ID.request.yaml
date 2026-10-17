@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:8080/api/services/6ac45200253918422049d1e9
+method: GET
+order: 2000

@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://localhost:8080/api/bookings
+method: POST
+body:
+  type: json
+  content: "\r
+
+    {\r
+
+    \  \"clientName\": \"jose maria\",\r
+
+    \  \"clientEmail\": \"majo@example.com\",\r
+
+    \  \"date\": \"2026-10-20\",\r
+
+    \  \"time\": \"11:30\",\r
+
+    \  \"status\": \"Confirmada\"\r
+
+    }\r
+
+    \r\n"
+order: 3000

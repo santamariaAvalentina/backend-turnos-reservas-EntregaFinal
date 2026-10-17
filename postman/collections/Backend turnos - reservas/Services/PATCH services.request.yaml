@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:8080/api/services/6ac45200253918422049d1e9
+method: PATCH
+body:
+  type: json
+  content: "{\r\n    \"available\": false\r\n}"
+order: 5000

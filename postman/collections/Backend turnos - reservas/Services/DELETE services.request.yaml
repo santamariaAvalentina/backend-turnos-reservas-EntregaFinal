@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:8080/api/services/6ad2ab351263918a97290976
+method: DELETE
+order: 6000

@@ -1,0 +1,21 @@
+$kind: http-request
+url: http://localhost:8080/api/services/6ac6d21e26233c45586feadd
+method: PUT
+body:
+  type: json
+  content: "{\r
+
+    \  \"name\": \"Prótesis completa\",\r
+
+    \  \"description\": \"Prótesis dental completa para reemplazo de piezas dentales\",\r
+
+    \  \"duration\": 120,\r
+
+    \  \"price\": 60,\r
+
+    \  \"category\": \"Prótesis\",\r
+
+    \  \"available\": true\r
+
+    }"
+order: 4000

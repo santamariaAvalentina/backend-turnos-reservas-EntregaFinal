@@ -1,0 +1,349 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Backend Turnos-reservas",
+    "version": "1.0.0",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080"
+    }
+  ],
+  "paths": {
+    "/api/services": {
+      "get": {
+        "summary": "GET services",
+        "responses": {},
+        "tags": [
+          "Services"
+        ]
+      },
+      "post": {
+        "summary": "POST services",
+        "responses": {},
+        "tags": [
+          "Services"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "available": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "name": "Corona provisoria",
+                "description": "Restauración provisional para proteger el diente mientras se realiza la corona definitiva",
+                "duration": 30,
+                "price": 25000,
+                "category": "Prótesis",
+                "available": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/services/6ac45200253918422049d1e9": {
+      "get": {
+        "summary": "GET services ID",
+        "responses": {},
+        "tags": [
+          "Services"
+        ]
+      },
+      "patch": {
+        "summary": "PATCH services",
+        "responses": {},
+        "tags": [
+          "Services"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "available": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "available": false
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/services/6ac6d21e26233c45586feadd": {
+      "put": {
+        "summary": "PUT servicesID",
+        "responses": {},
+        "tags": [
+          "Services"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string"
+                  },
+                  "description": {
+                    "type": "string"
+                  },
+                  "duration": {
+                    "type": "integer"
+                  },
+                  "price": {
+                    "type": "integer"
+                  },
+                  "category": {
+                    "type": "string"
+                  },
+                  "available": {
+                    "type": "boolean"
+                  }
+                }
+              },
+              "example": {
+                "name": "Prótesis completa",
+                "description": "Prótesis dental completa para reemplazo de piezas dentales",
+                "duration": 120,
+                "price": 60,
+                "category": "Prótesis",
+                "available": true
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/services/6ad2ab351263918a97290976": {
+      "delete": {
+        "summary": "DELETE services",
+        "responses": {},
+        "tags": [
+          "Services"
+        ]
+      }
+    },
+    "/api/bookings": {
+      "get": {
+        "summary": "GET bookings",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ]
+      },
+      "post": {
+        "summary": "POST booking",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientName": {
+                    "type": "string"
+                  },
+                  "clientEmail": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "time": {
+                    "type": "string",
+                    "format": "style"
+                  },
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "clientName": "jose maria",
+                "clientEmail": "majo@example.com",
+                "date": "2026-10-20",
+                "time": "11:30",
+                "status": "Confirmada"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bookings/6ac5721972ce574b1402e709": {
+      "get": {
+        "summary": "GET booking ID",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ]
+      },
+      "delete": {
+        "summary": "DELETE booking",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientName": {
+                    "type": "string"
+                  },
+                  "clientEmail": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "time": {
+                    "type": "string",
+                    "format": "style"
+                  },
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "clientName": "Carlos Fernández",
+                "clientEmail": "carlos.fernandez@example.com",
+                "date": "2026-10-15",
+                "time": "12:30",
+                "status": "confirmed"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bookings/6ac5721972ce574b1402e709/services/6ac44f91a429a4fa2881f2bf": {
+      "post": {
+        "summary": "POST service + booking",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bookings/6abc31d56c1ce23aa7e9d49f": {
+      "put": {
+        "summary": "PUT bookings",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "clientName": {
+                    "type": "string"
+                  },
+                  "clientEmail": {
+                    "type": "string",
+                    "format": "email"
+                  },
+                  "date": {
+                    "type": "string",
+                    "format": "date"
+                  },
+                  "time": {
+                    "type": "string",
+                    "format": "style"
+                  },
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "clientName": "Carlos Fernández",
+                "clientEmail": "carlos.fernandez@example.com",
+                "date": "2026-10-15",
+                "time": "12:30",
+                "status": "confirmed"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/bookings/6ad15a7b58098819187a4af5": {
+      "patch": {
+        "summary": "PATCH booking",
+        "responses": {},
+        "tags": [
+          "Bookings"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "status": "Confirmada"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+workspace:
+  id: 361e705c-3e18-4b39-85f4-678aedd9f6ed
+cloudResources:
+  globals:
+    ../postman/globals/workspace.globals.yaml: bf451d31-a90b-4dc0-8b6c-64f526873198
+  collections:
+    ../postman/collections/Backend turnos - reservas: 57536360-2062334a-a0c3-48fb-807d-c695cb856c77
+localResources:
+  specs:
+    - ../postman/specs/Backend Turnos-reservas/Backend Turnos-reservas.json
+    - ../postman/specs/final/final.yaml
+resourceNameMappings:
+  specs:
+    - ../postman/specs/Backend Turnos-reservas/Backend Turnos-reservas.json: Backend Turnos-reservas
+    - ../postman/specs/final/final.yaml: final

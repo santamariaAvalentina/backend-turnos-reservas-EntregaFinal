@@ -1,0 +1,23 @@
+$kind: http-request
+url: http://localhost:8080/api/services
+method: POST
+body:
+  type: json
+  content: "\r
+
+    {\r
+
+    \  \"name\": \"Corona provisoria\",\r
+
+    \  \"description\": \"Restauración provisional para proteger el diente mientras se realiza la corona definitiva\",\r
+
+    \  \"duration\": 30,\r
+
+    \  \"price\": 25000,\r
+
+    \  \"category\": \"Prótesis\",\r
+
+    \  \"available\": true\r
+
+    }\r\n"
+order: 3000

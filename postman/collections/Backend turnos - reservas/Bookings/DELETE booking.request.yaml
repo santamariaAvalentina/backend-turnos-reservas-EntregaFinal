@@ -1,0 +1,19 @@
+$kind: http-request
+url: http://localhost:8080/api/bookings/6ac5721972ce574b1402e709
+method: DELETE
+body:
+  type: json
+  content: "{\r
+
+    \  \"clientName\": \"Carlos Fernández\",\r
+
+    \  \"clientEmail\": \"carlos.fernandez@example.com\",\r
+
+    \  \"date\": \"2026-10-15\",\r
+
+    \  \"time\": \"12:30\",\r
+
+    \  \"status\": \"confirmed\"\r
+
+    }"
+order: 7000

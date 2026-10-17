@@ -1,0 +1,7 @@
+$kind: http-request
+url: http://localhost:8080/api/bookings/6ac5721972ce574b1402e709/services/6ac44f91a429a4fa2881f2bf
+method: POST
+body:
+  type: json
+  content: ""
+order: 4000

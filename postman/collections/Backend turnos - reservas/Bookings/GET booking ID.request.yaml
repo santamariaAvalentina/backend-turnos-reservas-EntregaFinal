@@ -1,0 +1,4 @@
+$kind: http-request
+url: http://localhost:8080/api/bookings/6ac5721972ce574b1402e709
+method: GET
+order: 2000
