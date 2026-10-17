@@ -1,10 +1,10 @@
-# Backend Turnos y Reservas
+# Backend Turnos y Reservas — Entrega Final
 
 ## Descripción del proyecto
 
-Este proyecto consiste en el desarrollo de una API REST para la gestión de servicios y reservas de un sistema de turnos. Permite realizar operaciones CRUD (crear, consultar, actualizar y eliminar) sobre servicios y reservas, gestionar la asociación entre ambos y consultar información relacionada.
+Este proyecto consiste en el desarrollo de una API REST para la gestión de servicios y reservas de un sistema de turnos. Permite administrar servicios disponibles, crear y consultar reservas, asociar servicios existentes a las reservas y consultar la información relacionada entre ambas entidades.
 
-El proyecto fue desarrollado con Node.js, Express y MongoDB, utilizando Mongoose para la interacción con la base de datos. También incorpora validaciones con Zod, vistas con Handlebars y comunicación en tiempo real mediante Socket.io.
+El proyecto fue desarrollado con Node.js, Express y MongoDB, utilizando Mongoose para la persistencia de datos. También incorpora validaciones con Zod, vistas con Handlebars y comunicación en tiempo real mediante Socket.io.
 
 ## Tecnologías utilizadas
 
@@ -12,9 +12,11 @@ El proyecto fue desarrollado con Node.js, Express y MongoDB, utilizando Mongoose
 - **Express:** framework para desarrollar la API REST.
 - **MongoDB Atlas:** base de datos NoSQL en la nube.
 - **Mongoose:** modelado de datos y conexión con MongoDB.
-- **Zod:** validación de datos recibidos por la API.
+- **Zod:** validación de los datos recibidos por la API.
 - **Handlebars:** motor de plantillas para renderizar vistas.
 - **Socket.io:** comunicación en tiempo real.
+- **HTML:** estructura del contenido de las vistas.
+- **CSS:** estilos y presentación visual, incluyendo el uso de SVG para gráficos vectoriales.
 - **Postman:** pruebas de los endpoints de la API.
 - **Git y GitHub:** control de versiones y almacenamiento del código fuente.
 
@@ -29,7 +31,7 @@ El proyecto fue desarrollado con Node.js, Express y MongoDB, utilizando Mongoose
 - Modificar parcialmente un servicio.
 - Eliminar servicios.
 - Filtrar servicios por categoría y disponibilidad.
-- Aplicar paginación.
+- Aplicar paginación a los resultados.
 - Ordenar los resultados de las consultas.
 
 ### Gestión de reservas
@@ -40,32 +42,34 @@ El proyecto fue desarrollado con Node.js, Express y MongoDB, utilizando Mongoose
 - Actualizar reservas.
 - Modificar parcialmente una reserva.
 - Eliminar reservas.
-- Asociar servicios a una reserva.
-- Definir la cantidad de cada servicio asociado.
-- Consultar los servicios asociados a una reserva mediante `populate`.
+- Asociar servicios existentes a una reserva.
+- Registrar la cantidad de cada servicio asociado.
+- Consultar los servicios asociados mediante `populate`.
+
+Las reservas almacenan referencias a los servicios mediante `ObjectId` y la cantidad correspondiente (`quantity`), evitando guardar el objeto completo del servicio.
 
 ### Validaciones
 
-Se utiliza Zod para validar los datos recibidos en las solicitudes antes de procesarlos.
+Se utiliza Zod para validar los datos de entrada antes de realizar las operaciones correspondientes en la base de datos.
 
 ### Vistas con Handlebars
 
-El proyecto incorpora vistas para consultar servicios y reservas desde el navegador.
+El proyecto incorpora vistas para consultar servicios y reservas desde el navegador mediante el motor de plantillas Handlebars.
 
-### Actualización en tiempo real
+### Comunicación en tiempo real
 
-Se utiliza Socket.io para comunicar actualizaciones de los servicios en tiempo real.
+Se utiliza Socket.io para implementar la comunicación en tiempo real relacionada con los servicios.
 
 ## Arquitectura del proyecto
 
-El proyecto está organizado en capas para separar las responsabilidades y facilitar el mantenimiento del código.
+El proyecto está organizado en capas para separar responsabilidades y facilitar el mantenimiento del código.
 
-- **Routes:** definen las rutas y los endpoints.
-- **Controllers:** reciben las solicitudes y gestionan las respuestas HTTP.
+- **Routes:** definen las rutas y los endpoints de la API.
+- **Controllers:** reciben las solicitudes HTTP y gestionan las respuestas.
 - **Services:** contienen la lógica de negocio.
 - **Repositories:** centralizan las operaciones de acceso a los datos.
 - **DAO:** gestionan las consultas a la base de datos.
-- **Models:** definen los esquemas de Mongoose.
+- **Models:** definen los esquemas y modelos de Mongoose.
 - **Views:** contienen las plantillas de Handlebars.
 - **Public:** contiene los archivos estáticos del proyecto.
 
@@ -73,22 +77,22 @@ El proyecto está organizado en capas para separar las responsabilidades y facil
 
 ### Requisitos previos
 
-Para ejecutar el proyecto se necesita tener instalado:
+Para ejecutar el proyecto se necesita:
 
-- Node.js.
-- npm.
-- Una cuenta y una base de datos configurada en MongoDB Atlas.
+- Node.js y npm instalados.
+- Una cuenta de MongoDB Atlas.
+- Una base de datos configurada y accesible en MongoDB Atlas.
 
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/santamariaAvalentina/backend-turnos-reservas-preentrega8.git
+git clone https://github.com/santamariaAvalentina/backend-turnos-reservas-EntregaFinal.git
 ```
 
 ### 2. Ingresar a la carpeta del proyecto
 
 ```bash
-cd backend-turnos-reservas-preentrega8
+cd backend-turnos-reservas-EntregaFinal
 ```
 
 ### 3. Instalar las dependencias
@@ -99,9 +103,19 @@ npm install
 
 ### 4. Configurar las variables de entorno
 
-Crear un archivo `.env` en la raíz del proyecto y configurar las variables necesarias para la conexión con MongoDB Atlas y el puerto del servidor.
+Crear un archivo `.env` en la raíz del proyecto, tomando como referencia el archivo `.env.example`.
 
-**Importante:** no compartir las credenciales de la base de datos ni subir el archivo `.env` al repositorio.
+Configurar las variables necesarias para la ejecución del servidor y la conexión con MongoDB Atlas.
+
+Ejemplo del archivo `.env.example`:
+
+```env
+PORT=
+NODE_ENV=
+MONGO_URI=
+```
+
+**Importante:** completar las variables en el archivo `.env` local con los valores correspondientes. No publicar ese archivo ni compartir credenciales de acceso a la base de datos.
 
 ### 5. Iniciar el servidor
 
@@ -119,12 +133,14 @@ Ruta base: `/api/services`
 
 | Método HTTP | Operación |
 |---|---|
-| GET | Consultar todos los servicios, con filtros, paginación y ordenamiento |
+| GET | Consultar servicios con filtros, paginación y ordenamiento |
 | GET | Consultar un servicio por ID |
 | POST | Crear un servicio |
 | PUT | Actualizar un servicio |
 | PATCH | Modificar parcialmente un servicio |
 | DELETE | Eliminar un servicio |
+
+Los filtros y las opciones de consulta se reciben mediante parámetros de consulta (*query params*).
 
 ### Reservas
 
@@ -140,30 +156,32 @@ Ruta base: `/api/bookings`
 | DELETE | Eliminar una reserva |
 | POST | Asociar un servicio a una reserva |
 
-Para asociar un servicio a una reserva se utiliza la ruta:
+Para asociar un servicio a una reserva se utiliza la siguiente ruta:
 
 `POST /api/bookings/:bid/services/:sid`
 
-Los parámetros `:bid` y `:sid` representan, respectivamente, el ID de la reserva y el ID del servicio.
+Los parámetros `:bid` y `:sid` representan el ID de la reserva y el ID del servicio, respectivamente.
 
 ## Colección de Postman
 
-La colección contiene las solicitudes organizadas para probar los endpoints de servicios y reservas, incluyendo los métodos GET, POST, PUT, PATCH y DELETE, según corresponda.
+La colección de Postman contiene las solicitudes organizadas para probar los endpoints de servicios y reservas.
+
+Incluye solicitudes para consultar, crear, actualizar, modificar parcialmente y eliminar recursos, así como para asociar servicios a las reservas.
 
 **Enlace a la colección pública de Postman:**
 
-[Ver colección Backend Turnos - Reservas en Postman](https://www.postman.com/santamaria-a-valentina-8613001/backend-turnos-reservas/collection/57536360-2062334a-a0c3-48fb-807d-c695cb856c77?action=share&source=copy-link&creator=57536360)
+[Ver colección Backend Turnos - Reservas](https://www.postman.com/santamaria-a-valentina-8613001/backend-turnos-reservas/collection/57536360-2062334a-a0c3-48fb-807d-c695cb856c77?action=share&source=copy-link&creator=57536360)
 
-Para ejecutar las solicitudes contra la API, el servidor debe estar iniciado y las variables de entorno necesarias deben estar configuradas.
+Para ejecutar las solicitudes contra la API, es necesario que el servidor esté iniciado y que las variables de entorno estén configuradas correctamente.
 
 ## Repositorio de GitHub
 
-El código fuente del proyecto se encuentra disponible en el siguiente repositorio:
+El código fuente del proyecto se encuentra disponible en el siguiente repositorio público:
 
-[Ver repositorio Backend Turnos y Reservas en GitHub](https://github.com/santamariaAvalentina/backend-turnos-reservas-preentrega8)
+[Ver repositorio Backend Turnos y Reservas — Entrega Final](https://github.com/santamariaAvalentina/backend-turnos-reservas-EntregaFinal)
 
 ## Autora
 
 **Andrea Valentina Santamaria**
 
-Proyecto realizado como parte de la formación en desarrollo Backend
+Proyecto realizado como parte de la formación en desarrollo Backend.
